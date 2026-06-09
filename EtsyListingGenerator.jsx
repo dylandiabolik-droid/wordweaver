@@ -122,11 +122,13 @@ export default function EtsyListingGenerator() {
       const data = await response.json();
       const raw = (data.content?.map((c) => c.text || "").join("") || "").trim();
       const cleaned = raw.replace(/```json|```/g, "").trim();
-      const parsed = JSON.parse(cleaned);
+      const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
+      if (!jsonMatch) throw new Error("No JSON found: " + cleaned.substring(0, 200));
+      const parsed = JSON.parse(jsonMatch[0]);
       setResult(parsed);
       setTimeout(() => resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
-    } catch {
-      setError("Fehler beim Generieren. Bitte erneut versuchen.");
+    } catch (err) {
+      setError("Fehler: " + (err.message || "Unbekannt"));
     } finally {
       setLoading(false);
     }
