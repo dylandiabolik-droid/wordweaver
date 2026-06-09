@@ -54,24 +54,9 @@ const CATEGORIES = [
 // ─── BUILD PROMPT ─────────────────────────────────────────────────────────────
 const buildEtsyPrompt = (productDesc, category, keywords, language) => {
   const langName = language === "de" ? "German" : language === "it" ? "Italian" : "English";
-  return `You are an expert Etsy SEO specialist. Create an optimized Etsy listing in ${langName} for this product:
-
-Product: ${productDesc}
-Category: ${category}
-Keywords to include: ${keywords || "none specified"}
-
-Return ONLY valid JSON (no markdown, no backticks), with this exact structure:
-{
-  "title": "SEO-optimized title, max 140 chars, front-load main keywords, include style/material/occasion",
-  "tags": ["tag1","tag2","tag3","tag4","tag5","tag6","tag7","tag8","tag9","tag10","tag11","tag12","tag13"],
-  "description": "3-paragraph description: 1) emotional hook 2) product details & dimensions 3) shipping/care/CTA. ~200 words.",
-  "seoTips": ["short tip 1 specific to this listing","short tip 2","short tip 3"]
-}
-
-Rules:
-- Exactly 13 tags, each max 20 chars, multi-word tags allowed (e.g. "watercolor print")
-- Title: keyword-rich but readable, no ALL CAPS spam
-- Description: warm, personal tone — typical of successful Etsy sellers`;
+  const kw = keywords ? keywords.substring(0, 100) : "none";
+  const desc = productDesc.substring(0, 200);
+  return `Etsy SEO expert. Create listing in ${langName} for: ${desc}. Category: ${category}. Keywords: ${kw}. Return ONLY JSON: {"title":"140 char SEO title","tags":["t1","t2","t3","t4","t5","t6","t7","t8","t9","t10","t11","t12","t13"],"description":"3 paragraphs 150 words","seoTips":["tip1","tip2","tip3"]}. Exactly 13 tags max 20 chars each. No markdown backticks.`;
 };
 
 // ─── FAQ CONTENT ──────────────────────────────────────────────────────────────
@@ -135,8 +120,9 @@ export default function EtsyListingGenerator() {
         body: JSON.stringify({ prompt }),
       });
       const data = await response.json();
-      const raw = data.content?.map((c) => c.text || "").join("").trim();
-      const parsed = JSON.parse(raw);
+      const raw = (data.content?.map((c) => c.text || "").join("") || "").trim();
+      const cleaned = raw.replace(/```json|```/g, "").trim();
+      const parsed = JSON.parse(cleaned);
       setResult(parsed);
       setTimeout(() => resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
     } catch {
