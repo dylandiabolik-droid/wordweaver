@@ -120,10 +120,10 @@ export default function EtsyListingGenerator() {
         body: JSON.stringify({ prompt }),
       });
       const data = await response.json();
-      const raw = (data.rawText || data.content?.map((c) => c.text || "").join("") || "").trim(); || "").join("") || "").trim();
+      const raw = (data.rawText || data.content?.map((c) => c.text || "").join("") || "").trim();
       const cleaned = raw.replace(/```json|```/g, "").trim();
       const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
-      if (!jsonMatch) throw new Error(""API said:": " + cleaned.substring(0, 500));
+      if (!jsonMatch) throw new Error("API said: " + cleaned.substring(0, 300));
       const parsed = JSON.parse(jsonMatch[0]);
       setResult(parsed);
       setTimeout(() => resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
