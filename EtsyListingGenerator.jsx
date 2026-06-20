@@ -179,7 +179,7 @@ export default function EtsyListingGenerator() {
 
         {/* Breadcrumb */}
         <p className="breadcrumb" style={{ marginBottom: 20 }}>
-          <a href="/">WordWeaver</a> › Etsy Listing Generator
+          <a href="/">ListingWriter</a> › Etsy Listing Generator
         </p>
 
         {/* Hero */}
@@ -292,10 +292,10 @@ export default function EtsyListingGenerator() {
               <p style={{ fontSize: 12, color: "#5c4a38", lineHeight: 1.7, marginBottom: 10 }}>
                 Für tiefere Keyword-Analyse empfehlen wir:
               </p>
-              <a href="https://erank.com/?ref=wordweaver" target="_blank" rel="noopener noreferrer" className="affiliate-link" style={{ display: "block", marginBottom: 8, fontSize: 13 }}>
+              <a href="https://erank.com/?ref=listingwriter" target="_blank" rel="noopener noreferrer" className="affiliate-link" style={{ display: "block", marginBottom: 8, fontSize: 13 }}>
                 📊 eRank – Etsy Keyword Tool
               </a>
-              <a href="https://www.marmalead.com/?ref=wordweaver" target="_blank" rel="noopener noreferrer" className="affiliate-link" style={{ display: "block", fontSize: 13 }}>
+              <a href="https://www.marmalead.com/?ref=listingwriter" target="_blank" rel="noopener noreferrer" className="affiliate-link" style={{ display: "block", fontSize: 13 }}>
                 🍊 Marmalead – Etsy SEO
               </a>
               <p style={{ fontSize: 11, color: "#b0a898", marginTop: 10 }}>
@@ -377,8 +377,8 @@ export default function EtsyListingGenerator() {
                     🚀 Nächster Schritt: Keywords validieren
                   </p>
                   <p style={{ fontSize: 13, color: "#2c5a3a", lineHeight: 1.7 }}>
-                    Prüfe mit <a href="https://erank.com/?ref=wordweaver" target="_blank" rel="noopener noreferrer" className="affiliate-link">eRank</a> oder{" "}
-                    <a href="https://www.marmalead.com/?ref=wordweaver" target="_blank" rel="noopener noreferrer" className="affiliate-link">Marmalead</a>,
+                    Prüfe mit <a href="https://erank.com/?ref=listingwriter" target="_blank" rel="noopener noreferrer" className="affiliate-link">eRank</a> oder{" "}
+                    <a href="https://www.marmalead.com/?ref=listingwriter" target="_blank" rel="noopener noreferrer" className="affiliate-link">Marmalead</a>,
                     wie oft deine Tags gesucht werden und wie hoch die Konkurrenz ist.
                   </p>
                 </div>
@@ -406,7 +406,7 @@ export default function EtsyListingGenerator() {
           <p style={{ fontSize: 14, color: "#5c4a38", lineHeight: 1.85 }}>
             Unser kostenloser Generator erstellt dir auf Knopfdruck einen vollständigen, SEO-optimierten Entwurf —
             den du dann mit deinem Produktwissen feinjustierst. Für die Keyword-Recherche empfehlen wir{" "}
-            <a href="https://erank.com/?ref=wordweaver" target="_blank" rel="noopener noreferrer" className="affiliate-link">eRank</a> als
+            <a href="https://erank.com/?ref=listingwriter" target="_blank" rel="noopener noreferrer" className="affiliate-link">eRank</a> als
             das führende Etsy-SEO-Tool.
           </p>
         </div>
@@ -430,7 +430,7 @@ export default function EtsyListingGenerator() {
 
       <footer style={{ borderTop: "1px solid #e4dfd7", padding: "20px 24px", textAlign: "center", marginTop: 40 }}>
         <p className="mono" style={{ fontSize: 11, color: "#b0a898", letterSpacing: "0.1em" }}>
-          WORDWEAVER · ETSY LISTING GENERATOR · <a href="/" style={{ color: "#8b7355" }}>HAUPTSEITE</a> ·{" "}
+          LISTINGWRITER · ETSY LISTING GENERATOR · <a href="/" style={{ color: "#8b7355" }}>HAUPTSEITE</a> ·{" "}
           <a href="/datenschutz" style={{ color: "#8b7355" }}>DATENSCHUTZ</a> ·{" "}
           <a href="/impressum" style={{ color: "#8b7355" }}>IMPRESSUM</a>
         </p>

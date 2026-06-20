@@ -20,7 +20,7 @@ const T = {
     history: "VERLAUF",
     tipsTitle: "Tipps für bessere Texte",
     tips: ["Emotionale Begriffe wirken stärker", "Gegensätze erzeugen Spannung", "Orte + Stimmungen = Atmosphäre", "3–7 Begriffe sind ideal"],
-    useCasesTitle: "Wofür eignet sich WordWeaver?",
+    useCasesTitle: "Wofür eignet sich ListingWriter?",
     useCases: [
       { title: "Marketing & Werbung", text: "Erstelle in Sekunden überzeugende Copy für Social Media, Newsletter oder Landingpages." },
       { title: "Kreatives Schreiben", text: "Lass dich von KI-Gedichten und Mini-Storys inspirieren — perfekt für Grußkarten oder Geschenke." },
@@ -29,7 +29,7 @@ const T = {
     errMin: "Bitte mindestens einen Begriff eingeben.",
     errMax: "Maximal 20 Begriffe erlaubt.",
     errApi: "Fehler beim Generieren. Bitte erneut versuchen.",
-    footer: "WORDWEAVER · KI-TEXTGENERATOR · DATENSCHUTZ · IMPRESSUM",
+    footer: "LISTINGWRITER · KI-TEXTGENERATOR · DATENSCHUTZ · IMPRESSUM",
     dailyQuote: "PHILOSOPHIE DES TAGES",
     shareBtn: "TEILEN",
   },
@@ -51,7 +51,7 @@ const T = {
     history: "HISTORY",
     tipsTitle: "Tips for Better Texts",
     tips: ["Emotional words have stronger impact", "Contrasts create tension", "Places + moods = atmosphere", "3–7 words is ideal"],
-    useCasesTitle: "What is WordWeaver good for?",
+    useCasesTitle: "What is ListingWriter good for?",
     useCases: [
       { title: "Marketing & Ads", text: "Create compelling copy in seconds for social media, newsletters, or landing pages." },
       { title: "Creative Writing", text: "Get inspired by AI poems and mini-stories — perfect for greeting cards or gifts." },
@@ -60,7 +60,7 @@ const T = {
     errMin: "Please enter at least one word.",
     errMax: "Maximum 20 words allowed.",
     errApi: "Error generating. Please try again.",
-    footer: "WORDWEAVER · AI TEXT GENERATOR · PRIVACY · IMPRINT",
+    footer: "LISTINGWRITER · AI TEXT GENERATOR · PRIVACY · IMPRINT",
     dailyQuote: "PHILOSOPHY OF THE DAY",
     shareBtn: "SHARE",
   },
@@ -82,7 +82,7 @@ const T = {
     history: "CRONOLOGIA",
     tipsTitle: "Consigli per testi migliori",
     tips: ["Le parole emotive hanno più impatto", "I contrasti creano tensione", "Luoghi + atmosfere = magia", "3–7 parole è l'ideale"],
-    useCasesTitle: "A cosa serve WordWeaver?",
+    useCasesTitle: "A cosa serve ListingWriter?",
     useCases: [
       { title: "Marketing & Pubblicità", text: "Crea copy convincenti in secondi per social media, newsletter o landing page." },
       { title: "Scrittura Creativa", text: "Lasciati ispirare da poesie e mini-storie IA — perfetto per biglietti o regali." },
@@ -91,7 +91,7 @@ const T = {
     errMin: "Inserisci almeno una parola.",
     errMax: "Massimo 20 parole consentite.",
     errApi: "Errore durante la generazione. Riprova.",
-    footer: "WORDWEAVER · GENERATORE TESTI IA · PRIVACY · IMPRINT",
+    footer: "LISTINGWRITER · GENERATORE TESTI IA · PRIVACY · IMPRINT",
     dailyQuote: "FILOSOFIA DEL GIORNO",
     shareBtn: "CONDIVIDI",
   },
@@ -210,7 +210,7 @@ const AdBanner = ({ slot, size = "leaderboard" }) => {
 };
 
 // ─── MAIN COMPONENT ───────────────────────────────────────────────────────────
-export default function WordWeaver() {
+export default function ListingWriter() {
   const [uiLang, setUiLang]       = useState("de");
   const [outLang, setOutLang]     = useState("de");
   const [input, setInput]         = useState("");
@@ -304,7 +304,7 @@ export default function WordWeaver() {
 
   const shareText = () => {
     if (navigator.share) {
-      navigator.share({ title: "WordWeaver", text: result });
+      navigator.share({ title: "ListingWriter", text: result });
     } else {
       navigator.clipboard.writeText(result);
       setShared(true);
