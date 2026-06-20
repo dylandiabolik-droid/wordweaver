@@ -158,25 +158,17 @@ export default function EtsyListingGenerator() {
       <header style={{ borderBottom: "1px solid #e4dfd7", padding: "18px 24px", background: "white" }}>
         <div style={{ maxWidth: 860, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div>
-            <a href="/" style={{ textDecoration: "none" }}>
-              <h1 className="playfair" style={{ fontSize: 22, fontWeight: 700, color: "#2c1810" }}>
-                Listing<em>Writer</em>
-              </h1>
-            </a>
+            <h1 className="playfair" style={{ fontSize: 22, fontWeight: 700, color: "#2c1810" }}>
+              Listing<em>Writer</em>
+            </h1>
             <p className="mono" style={{ fontSize: 10, color: "#a09080", letterSpacing: "0.12em", marginTop: 2 }}>
               ETSY LISTING GENERATOR
             </p>
           </div>
-          <a href="/" className="icon-btn" style={{ fontSize: 11 }}>← Back to home</a>
         </div>
       </header>
 
       <main style={{ maxWidth: 860, margin: "0 auto", padding: "32px 20px" }}>
-
-        {/* Breadcrumb */}
-        <p className="breadcrumb" style={{ marginBottom: 20 }}>
-          <a href="/">ListingWriter</a> › Etsy Listing Generator
-        </p>
 
         {/* Hero */}
         <div style={{ textAlign: "center", marginBottom: 36 }}>
@@ -402,9 +394,8 @@ export default function EtsyListingGenerator() {
 
       <footer style={{ borderTop: "1px solid #e4dfd7", padding: "20px 24px", textAlign: "center", marginTop: 40 }}>
         <p className="mono" style={{ fontSize: 11, color: "#b0a898", letterSpacing: "0.1em" }}>
-          LISTINGWRITER · ETSY LISTING GENERATOR · <a href="/" style={{ color: "#8b7355" }}>HOME</a> ·{" "}
-          <a href="/datenschutz" style={{ color: "#8b7355" }}>PRIVACY</a> ·{" "}
-          <a href="/impressum" style={{ color: "#8b7355" }}>IMPRINT</a>
+          LISTINGWRITER · ETSY LISTING GENERATOR · <a href="/privacy" style={{ color: "#8b7355" }}>PRIVACY</a> ·{" "}
+          <a href="/imprint" style={{ color: "#8b7355" }}>IMPRINT</a>
         </p>
       </footer>
     </div>
