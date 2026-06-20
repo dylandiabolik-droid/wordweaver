@@ -2,9 +2,9 @@ import { useState, useRef, useEffect } from "react";
 
 // ─── SEO HEAD ─────────────────────────────────────────────────────────────────
 const SEO_META = {
-  title: "Etsy Listing Generator – KI-Tool für Titel, Tags & Beschreibung",
+  title: "Etsy Listing Generator – Titel, Tags & Beschreibung in Sekunden",
   description:
-    "Erstelle in Sekunden optimierte Etsy-Listings: SEO-Titel, alle 13 Tags und eine verkaufsstarke Beschreibung – kostenlos, KI-gestützt.",
+    "Erstelle in Sekunden optimierte Etsy-Listings: SEO-Titel, alle 13 Tags und eine verkaufsstarke Beschreibung – kostenlos.",
 };
 
 // ─── SHARED STYLES ────────────────────────────────────────────────────────────
@@ -189,7 +189,7 @@ export default function EtsyListingGenerator() {
           </h2>
           <p style={{ fontSize: 15, color: "#5c4a38", lineHeight: 1.8, maxWidth: 600, margin: "0 auto" }}>
             Generiere in Sekunden einen <strong>SEO-optimierten Titel</strong>, alle <strong>13 Tags</strong> und eine 
-            verkaufsstarke <strong>Beschreibung</strong> für dein Etsy-Listing — kostenlos, KI-gestützt.
+            verkaufsstarke <strong>Beschreibung</strong> für dein Etsy-Listing — kostenlos.
           </p>
         </div>
 

@@ -316,11 +316,11 @@ export default function ListingWriter() {
   const langLabels = { de: "DE", en: "EN", it: "IT" };
 
   return (
-    <div style={{ fontFamily: "'Georgia','Times New Roman',serif", background: "#faf9f7", minHeight: "100vh", color: "#1a1714" }}>
+    <div style={{ fontFamily: "'Georgia','Times New Roman',serif", background: "#f0ece4", minHeight: "100vh", color: "#1a1714" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inconsolata:wght@400;600&display=swap');
         *{box-sizing:border-box;margin:0;padding:0;}
-        body{background:#faf9f7;}
+        body{background:#f0ece4;}
         .playfair{font-family:'Playfair Display',serif;}
         .mono{font-family:'Inconsolata',monospace;}
         .fade-in{animation:fadeIn 0.5s ease forwards;}
@@ -343,11 +343,11 @@ export default function ListingWriter() {
         .lang-btn{background:white;border:none;cursor:pointer;padding:6px 12px;font-family:'Inconsolata',monospace;font-size:13px;letter-spacing:0.05em;transition:all 0.15s;display:flex;align-items:center;gap:4px;}
         .lang-btn.active{background:#2c1810;color:#f5ede3;}
         .lang-btn:not(.active):hover{background:#fdf3e7;}
-        .quote-box{background:linear-gradient(135deg,#fdf3e7 0%,#faf9f7 100%);border:1px solid #e8dfd4;border-left:3px solid #8b7355;border-radius:6px;padding:18px 20px;margin-bottom:28px;}
+        .quote-box{background:linear-gradient(135deg,#fdf3e7 0%,#f0ece4 100%);border:1px solid #e8dfd4;border-left:3px solid #8b7355;border-radius:6px;padding:18px 20px;margin-bottom:28px;}
       `}</style>
 
       {/* Header */}
-      <header style={{ borderBottom:"1px solid #e4dfd7", padding:"18px 24px", display:"flex", alignItems:"center", justifyContent:"space-between", background:"white" }}>
+      <header style={{ borderBottom:"1px solid #e4dfd7", padding:"18px 24px", display:"flex", alignItems:"center", justifyContent:"space-between", background:"#f7f4ee" }}>
         <div>
           <h1 className="playfair" style={{ fontSize:26, fontWeight:700, letterSpacing:"-0.01em", color:"#2c1810" }}>
             Listing<em>Writer</em>
@@ -379,7 +379,7 @@ export default function ListingWriter() {
 
         {/* Etsy Tool Promo */}
         <a href="/etsy-listing-generator" style={{ textDecoration:"none", display:"block", marginBottom:28 }}>
-          <div style={{ background:"linear-gradient(135deg,#e8f5ee 0%,#f0faf5 100%)", border:"1.5px solid #b5dcc7", borderRadius:8, padding:"16px 22px", display:"flex", alignItems:"center", justifyContent:"space-between", cursor:"pointer", transition:"box-shadow 0.2s" }}
+          <div style={{ background:"linear-gradient(135deg,#dceee2 0%,#e6f2ea 100%)", border:"1.5px solid #b5dcc7", borderRadius:8, padding:"16px 22px", display:"flex", alignItems:"center", justifyContent:"space-between", cursor:"pointer", transition:"box-shadow 0.2s" }}
             onMouseEnter={e => e.currentTarget.style.boxShadow="0 2px 12px rgba(44,122,75,0.15)"}
             onMouseLeave={e => e.currentTarget.style.boxShadow="none"}
           >
