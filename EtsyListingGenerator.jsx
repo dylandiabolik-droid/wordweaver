@@ -2,9 +2,9 @@ import { useState, useRef, useEffect } from "react";
 
 // ─── SEO HEAD ─────────────────────────────────────────────────────────────────
 const SEO_META = {
-  title: "Etsy Listing Generator – Titel, Tags & Beschreibung in Sekunden",
+  title: "Etsy Listing Generator – Title, Tags & Description in Seconds",
   description:
-    "Erstelle in Sekunden optimierte Etsy-Listings: SEO-Titel, alle 13 Tags und eine verkaufsstarke Beschreibung – kostenlos.",
+    "Create optimized Etsy listings in seconds: SEO title, all 13 tags, and a compelling description – free.",
 };
 
 // ─── SHARED STYLES ────────────────────────────────────────────────────────────
@@ -42,19 +42,18 @@ const SHARED_STYLES = `
 // ─── CATEGORY OPTIONS ────────────────────────────────────────────────────────
 const CATEGORIES = [
   { value: "print", label: "🖼️ Print / Poster / Digital Art" },
-  { value: "jewelry", label: "💍 Schmuck / Jewelry" },
-  { value: "clothing", label: "👕 Kleidung / Clothing" },
-  { value: "home", label: "🏠 Wohnen / Home Decor" },
-  { value: "stationery", label: "📝 Papeterie / Stationery" },
-  { value: "craft", label: "✂️ Handgemacht / Handmade Craft" },
-  { value: "digital", label: "💾 Digitales Produkt / Digital Download" },
+  { value: "jewelry", label: "💍 Jewelry" },
+  { value: "clothing", label: "👕 Clothing" },
+  { value: "home", label: "🏠 Home Decor" },
+  { value: "stationery", label: "📝 Stationery" },
+  { value: "craft", label: "✂️ Handmade Craft" },
+  { value: "digital", label: "💾 Digital Download" },
   { value: "vintage", label: "🕰️ Vintage" },
 ];
 
 // ─── BUILD PROMPT ─────────────────────────────────────────────────────────────
-const buildEtsyPrompt = (productDesc, category, keywords, language) => {
-  const langName = language === "de" ? "German" : language === "it" ? "Italian" : "English";
-  return `You are an expert Etsy SEO specialist. Create an optimized Etsy listing in ${langName} for this product:
+const buildEtsyPrompt = (productDesc, category, keywords) => {
+  return `You are an expert Etsy SEO specialist. Create an optimized Etsy listing in English for this product:
 
 Product: ${productDesc}
 Category: ${category}
@@ -77,24 +76,24 @@ Rules:
 // ─── FAQ CONTENT ──────────────────────────────────────────────────────────────
 const FAQ = [
   {
-    q: "Wie viele Tags sollte ein Etsy-Listing haben?",
-    a: "Etsy erlaubt genau 13 Tags pro Listing. Du solltest immer alle 13 ausschöpfen — jeder Tag ist eine zusätzliche Chance, in der Etsy-Suche gefunden zu werden. Verwende eine Mischung aus breiten Begriffen (z.B. 'watercolor print') und spezifischen Long-Tail-Tags (z.B. 'italian village watercolor').",
+    q: "How many tags should an Etsy listing have?",
+    a: "Etsy allows exactly 13 tags per listing. You should always use all 13 — each tag is an extra chance to be found in Etsy search. Use a mix of broad terms (e.g. 'watercolor print') and specific long-tail tags (e.g. 'italian village watercolor').",
   },
   {
-    q: "Wie lang sollte ein Etsy-Titel sein?",
-    a: "Etsy erlaubt bis zu 140 Zeichen. Experten empfehlen, die wichtigsten Keywords ganz am Anfang zu platzieren, da Etsy nur die ersten ~55 Zeichen in den Suchergebnissen anzeigt. Trenne Keyword-Gruppen mit Kommas oder Bindestrichen.",
+    q: "How long should an Etsy title be?",
+    a: "Etsy allows up to 140 characters. Experts recommend placing the most important keywords right at the start, since Etsy only shows the first ~55 characters in search results. Separate keyword groups with commas or hyphens.",
   },
   {
-    q: "Was macht eine gute Etsy-Beschreibung aus?",
-    a: "Eine erfolgreiche Beschreibung beginnt mit einem emotionalen Hook (warum ist dieses Produkt besonders?), gefolgt von konkreten Produktdetails (Maße, Material, Technik) und endet mit einem klaren Call-to-Action plus Infos zu Versand und Pflege. Die ersten 160 Zeichen sind besonders wichtig, da sie in Google-Suchergebnissen erscheinen.",
+    q: "What makes a good Etsy description?",
+    a: "A successful description starts with an emotional hook (why is this product special?), followed by concrete product details (dimensions, material, technique), and ends with a clear call-to-action plus shipping and care info. The first 160 characters matter most, since they appear in Google search results.",
   },
   {
-    q: "Wie verbessere ich mein Etsy SEO?",
-    a: "Die wichtigsten Hebel: (1) Keywords im Titel, Tags UND Beschreibung verwenden, (2) regelmäßig neue Listings hinzufügen, (3) Fotos optimieren mit Alt-Text, (4) Kundenbewertungen sammeln, (5) Etsy Ads für neue Listings testen. Tools wie eRank oder Marmalead helfen dir, Suchvolumen und Konkurrenz für Keywords zu analysieren.",
+    q: "How do I improve my Etsy SEO?",
+    a: "The key levers: (1) use keywords in the title, tags, AND description, (2) add new listings regularly, (3) optimize photos with alt text, (4) gather customer reviews, (5) test Etsy Ads for new listings. Tools like eRank or Marmalead help you analyze search volume and competition for keywords.",
   },
   {
-    q: "Ist dieser Generator kostenlos?",
-    a: "Ja, der Etsy Listing Generator ist kostenlos nutzbar. Du kannst täglich mehrere Listings generieren lassen.",
+    q: "Is this generator free?",
+    a: "Yes, the Etsy Listing Generator is free to use. You can generate multiple listings every day.",
   },
 ];
 
@@ -103,7 +102,6 @@ export default function EtsyListingGenerator() {
   const [productDesc, setProductDesc] = useState("");
   const [category, setCategory] = useState("print");
   const [keywords, setKeywords] = useState("");
-  const [language, setLanguage] = useState("en");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
@@ -119,14 +117,14 @@ export default function EtsyListingGenerator() {
 
   const generate = async () => {
     if (!productDesc.trim()) {
-      setError("Bitte beschreibe dein Produkt.");
+      setError("Please describe your product.");
       return;
     }
     setError("");
     setLoading(true);
     setResult(null);
 
-    const prompt = buildEtsyPrompt(productDesc, category, keywords, language);
+    const prompt = buildEtsyPrompt(productDesc, category, keywords);
 
     try {
       const response = await fetch("/api/generate", {
@@ -140,7 +138,7 @@ export default function EtsyListingGenerator() {
       setResult(parsed);
       setTimeout(() => resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
     } catch {
-      setError("Fehler beim Generieren. Bitte erneut versuchen.");
+      setError("Error generating. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -151,8 +149,6 @@ export default function EtsyListingGenerator() {
     setCopiedField(field);
     setTimeout(() => setCopiedField(""), 2000);
   };
-
-  const langFlags = { de: "🇩🇪", en: "🇬🇧", it: "🇮🇹" };
 
   return (
     <div style={{ fontFamily: "'Georgia','Times New Roman',serif", background: "#faf9f7", minHeight: "100vh", color: "#1a1714" }}>
@@ -171,7 +167,7 @@ export default function EtsyListingGenerator() {
               ETSY LISTING GENERATOR
             </p>
           </div>
-          <a href="/" className="icon-btn" style={{ fontSize: 11 }}>← Zur Hauptseite</a>
+          <a href="/" className="icon-btn" style={{ fontSize: 11 }}>← Back to home</a>
         </div>
       </header>
 
@@ -188,8 +184,8 @@ export default function EtsyListingGenerator() {
             Etsy Listing Generator
           </h2>
           <p style={{ fontSize: 15, color: "#5c4a38", lineHeight: 1.8, maxWidth: 600, margin: "0 auto" }}>
-            Generiere in Sekunden einen <strong>SEO-optimierten Titel</strong>, alle <strong>13 Tags</strong> und eine 
-            verkaufsstarke <strong>Beschreibung</strong> für dein Etsy-Listing — kostenlos.
+            Generate an <strong>SEO-optimized title</strong>, all <strong>13 tags</strong> and a 
+            compelling <strong>description</strong> for your Etsy listing in seconds — free.
           </p>
         </div>
 
@@ -200,11 +196,11 @@ export default function EtsyListingGenerator() {
             {/* Product Description */}
             <div style={{ marginBottom: 18 }}>
               <label className="mono" style={{ fontSize: 11, letterSpacing: "0.12em", color: "#a09080", display: "block", marginBottom: 8 }}>
-                PRODUKTBESCHREIBUNG *
+                PRODUCT DESCRIPTION *
               </label>
               <textarea
                 rows={4}
-                placeholder="z.B. Aquarell-Poster eines kleinen italienischen Bergdorfes, handgemalt, A4 Digitaldruck, warme Erdtöne"
+                placeholder="e.g. Watercolor poster of a small Italian hillside village, hand-painted, A4 digital print, warm earth tones"
                 value={productDesc}
                 onChange={(e) => setProductDesc(e.target.value)}
               />
@@ -213,7 +209,7 @@ export default function EtsyListingGenerator() {
             {/* Category */}
             <div style={{ marginBottom: 18 }}>
               <label className="mono" style={{ fontSize: 11, letterSpacing: "0.12em", color: "#a09080", display: "block", marginBottom: 8 }}>
-                KATEGORIE
+                CATEGORY
               </label>
               <select
                 value={category}
@@ -229,38 +225,14 @@ export default function EtsyListingGenerator() {
             {/* Keywords */}
             <div style={{ marginBottom: 18 }}>
               <label className="mono" style={{ fontSize: 11, letterSpacing: "0.12em", color: "#a09080", display: "block", marginBottom: 8 }}>
-                EIGENE KEYWORDS (optional, kommagetrennt)
+                CUSTOM KEYWORDS (optional, comma-separated)
               </label>
               <input
                 type="text"
-                placeholder="z.B. italian village, wall art, gift idea"
+                placeholder="e.g. italian village, wall art, gift idea"
                 value={keywords}
                 onChange={(e) => setKeywords(e.target.value)}
               />
-            </div>
-
-            {/* Output Language */}
-            <div style={{ marginBottom: 22 }}>
-              <label className="mono" style={{ fontSize: 11, letterSpacing: "0.12em", color: "#a09080", display: "block", marginBottom: 8 }}>
-                LISTING-SPRACHE
-              </label>
-              <div style={{ display: "flex", gap: 8 }}>
-                {["en", "de", "it"].map((l) => (
-                  <button
-                    key={l}
-                    onClick={() => setLanguage(l)}
-                    style={{
-                      padding: "8px 18px", border: "1.5px solid", borderRadius: 4, cursor: "pointer",
-                      fontSize: 13, fontFamily: "'Inconsolata',monospace",
-                      borderColor: language === l ? "#2c7a4b" : "#d4cfc8",
-                      background: language === l ? "#2c7a4b" : "white",
-                      color: language === l ? "white" : "#5c4a38",
-                    }}
-                  >
-                    {langFlags[l]} {l.toUpperCase()}
-                  </button>
-                ))}
-              </div>
             </div>
 
             {error && (
@@ -270,7 +242,7 @@ export default function EtsyListingGenerator() {
             )}
 
             <button className="gen-btn" onClick={generate} disabled={loading}>
-              {loading ? "⟳ Generiere Listing…" : "✦ Etsy-Listing generieren"}
+              {loading ? "⟳ Generating listing…" : "✦ Generate Etsy listing"}
             </button>
           </div>
 
@@ -278,9 +250,9 @@ export default function EtsyListingGenerator() {
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             <div style={{ background: "#f0faf5", border: "1px solid #b5dcc7", borderRadius: 8, padding: 16 }}>
               <p className="playfair" style={{ fontSize: 14, color: "#1a4a2e", marginBottom: 10, fontWeight: 700 }}>
-                💡 Warum SEO-Listings?
+                💡 Why SEO listings matter
               </p>
-              {["Etsy durchsuchen täglich Millionen Käufer", "90% klicken nur auf Seite 1", "Titel & Tags = dein wichtigster Hebel", "13 Tags = 13 Chancen gefunden zu werden"].map((tip, i) => (
+              {["Millions of buyers search Etsy every day", "90% only click page 1", "Title & tags are your biggest lever", "13 tags = 13 chances to be found"].map((tip, i) => (
                 <p key={i} style={{ fontSize: 12, color: "#2c5a3a", marginBottom: 6, paddingLeft: 10, borderLeft: "2px solid #2c7a4b" }}>{tip}</p>
               ))}
             </div>
@@ -290,7 +262,7 @@ export default function EtsyListingGenerator() {
                 ETSY SEO TOOLS
               </p>
               <p style={{ fontSize: 12, color: "#5c4a38", lineHeight: 1.7, marginBottom: 10 }}>
-                Für tiefere Keyword-Analyse empfehlen wir:
+                For deeper keyword research we recommend:
               </p>
               <a href="https://erank.com/?ref=listingwriter" target="_blank" rel="noopener noreferrer" className="affiliate-link" style={{ display: "block", marginBottom: 8, fontSize: 13 }}>
                 📊 eRank – Etsy Keyword Tool
@@ -299,7 +271,7 @@ export default function EtsyListingGenerator() {
                 🍊 Marmalead – Etsy SEO
               </a>
               <p style={{ fontSize: 11, color: "#b0a898", marginTop: 10 }}>
-                * Affiliate-Links · Für dich kostenlos
+                * Affiliate links · Free for you
               </p>
             </div>
           </div>
@@ -309,7 +281,7 @@ export default function EtsyListingGenerator() {
         {(loading || result) && (
           <div ref={resultRef} className="fade-in" style={{ marginTop: 36 }}>
             <h3 className="playfair" style={{ fontSize: 20, color: "#2c1810", marginBottom: 20, borderBottom: "1px solid #e4dfd7", paddingBottom: 12 }}>
-              ✦ Dein generiertes Etsy-Listing
+              ✦ Your generated Etsy listing
             </h3>
 
             {loading ? (
@@ -323,9 +295,9 @@ export default function EtsyListingGenerator() {
                 {/* Title */}
                 <div className="section-box">
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
-                    <p className="mono" style={{ fontSize: 11, letterSpacing: "0.12em", color: "#a09080" }}>TITEL ({result.title?.length || 0}/140 Zeichen)</p>
+                    <p className="mono" style={{ fontSize: 11, letterSpacing: "0.12em", color: "#a09080" }}>TITLE ({result.title?.length || 0}/140 characters)</p>
                     <button className="icon-btn" onClick={() => copyField(result.title, "title")}>
-                      {copiedField === "title" ? "✓ Kopiert" : "Kopieren"}
+                      {copiedField === "title" ? "✓ Copied" : "Copy"}
                     </button>
                   </div>
                   <p className="playfair" style={{ fontSize: 16, color: "#2c1810", lineHeight: 1.6 }}>{result.title}</p>
@@ -338,7 +310,7 @@ export default function EtsyListingGenerator() {
                       TAGS ({result.tags?.length || 0}/13)
                     </p>
                     <button className="icon-btn" onClick={() => copyField(result.tags?.join(", "), "tags")}>
-                      {copiedField === "tags" ? "✓ Kopiert" : "Alle kopieren"}
+                      {copiedField === "tags" ? "✓ Copied" : "Copy all"}
                     </button>
                   </div>
                   <div>
@@ -351,9 +323,9 @@ export default function EtsyListingGenerator() {
                 {/* Description */}
                 <div className="section-box">
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
-                    <p className="mono" style={{ fontSize: 11, letterSpacing: "0.12em", color: "#a09080" }}>BESCHREIBUNG</p>
+                    <p className="mono" style={{ fontSize: 11, letterSpacing: "0.12em", color: "#a09080" }}>DESCRIPTION</p>
                     <button className="icon-btn" onClick={() => copyField(result.description, "desc")}>
-                      {copiedField === "desc" ? "✓ Kopiert" : "Kopieren"}
+                      {copiedField === "desc" ? "✓ Copied" : "Copy"}
                     </button>
                   </div>
                   <p style={{ fontSize: 14, color: "#2c1810", lineHeight: 1.85, whiteSpace: "pre-wrap" }}>{result.description}</p>
@@ -363,7 +335,7 @@ export default function EtsyListingGenerator() {
                 {result.seoTips && (
                   <div className="section-box" style={{ background: "#fdf8f3" }}>
                     <p className="mono" style={{ fontSize: 11, letterSpacing: "0.12em", color: "#a09080", marginBottom: 10 }}>
-                      💡 SPEZIFISCHE SEO-TIPPS FÜR DIESES LISTING
+                      💡 SPECIFIC SEO TIPS FOR THIS LISTING
                     </p>
                     {result.seoTips.map((tip, i) => (
                       <p key={i} style={{ fontSize: 13, color: "#5c4a38", marginBottom: 6, paddingLeft: 12, borderLeft: "2px solid #8b7355" }}>{tip}</p>
@@ -374,12 +346,12 @@ export default function EtsyListingGenerator() {
                 {/* Affiliate CTA */}
                 <div className="affiliate-box">
                   <p style={{ fontSize: 14, color: "#1a4a2e", fontWeight: 600, marginBottom: 6 }}>
-                    🚀 Nächster Schritt: Keywords validieren
+                    🚀 Next step: validate your keywords
                   </p>
                   <p style={{ fontSize: 13, color: "#2c5a3a", lineHeight: 1.7 }}>
-                    Prüfe mit <a href="https://erank.com/?ref=listingwriter" target="_blank" rel="noopener noreferrer" className="affiliate-link">eRank</a> oder{" "}
-                    <a href="https://www.marmalead.com/?ref=listingwriter" target="_blank" rel="noopener noreferrer" className="affiliate-link">Marmalead</a>,
-                    wie oft deine Tags gesucht werden und wie hoch die Konkurrenz ist.
+                    Check with <a href="https://erank.com/?ref=listingwriter" target="_blank" rel="noopener noreferrer" className="affiliate-link">eRank</a> or{" "}
+                    <a href="https://www.marmalead.com/?ref=listingwriter" target="_blank" rel="noopener noreferrer" className="affiliate-link">Marmalead</a>{" "}
+                    how often your tags are searched and how competitive they are.
                   </p>
                 </div>
               </>
@@ -390,31 +362,31 @@ export default function EtsyListingGenerator() {
         {/* Info Article Section — SEO Content */}
         <div style={{ marginTop: 60, borderTop: "1px solid #e4dfd7", paddingTop: 40 }}>
           <h2 className="playfair" style={{ fontSize: 22, color: "#2c1810", marginBottom: 16 }}>
-            Etsy SEO: So wirst du auf Etsy gefunden
+            Etsy SEO: how to get found on Etsy
           </h2>
           <p style={{ fontSize: 14, color: "#5c4a38", lineHeight: 1.85, marginBottom: 16 }}>
-            Etsy hat über 90 Millionen aktive Käufer — aber nur wer von der Etsy-Suchmaschine gefunden wird, macht Umsatz.
-            Der Etsy-Algorithmus heißt <strong>Etsy Search</strong> und bewertet deine Listings nach Relevanz, Qualität und Erfahrung.
-            Die drei wichtigsten Faktoren: <strong>Titel</strong>, <strong>Tags</strong> und <strong>Beschreibung</strong>.
+            Etsy has over 90 million active buyers — but only sellers who get found by Etsy's search engine make sales.
+            Etsy's algorithm is called <strong>Etsy Search</strong> and ranks your listings by relevance, quality, and experience.
+            The three most important factors: <strong>title</strong>, <strong>tags</strong>, and <strong>description</strong>.
           </p>
           <p style={{ fontSize: 14, color: "#5c4a38", lineHeight: 1.85, marginBottom: 16 }}>
-            Ein optimierter Etsy-Titel beginnt mit dem wichtigsten Keyword, enthält Stil und Material, und ist dennoch lesbar —
-            kein Keyword-Spam. Die 13 Tags sollten eine Mischung sein: breite Begriffe für Reichweite, spezifische Long-Tail-Tags
-            für Conversion. Die Beschreibung nutzt du nicht nur für Käufer, sondern auch als SEO-Fläche: wiederhole deine
-            wichtigsten Keywords natürlich in den ersten 160 Zeichen.
+            An optimized Etsy title starts with the most important keyword, includes style and material, and stays
+            readable — no keyword spam. Your 13 tags should be a mix: broad terms for reach, specific long-tail tags
+            for conversion. Use the description not just to convince buyers, but as SEO real estate too: repeat your
+            most important keywords naturally within the first 160 characters.
           </p>
           <p style={{ fontSize: 14, color: "#5c4a38", lineHeight: 1.85 }}>
-            Unser kostenloser Generator erstellt dir auf Knopfdruck einen vollständigen, SEO-optimierten Entwurf —
-            den du dann mit deinem Produktwissen feinjustierst. Für die Keyword-Recherche empfehlen wir{" "}
-            <a href="https://erank.com/?ref=listingwriter" target="_blank" rel="noopener noreferrer" className="affiliate-link">eRank</a> als
-            das führende Etsy-SEO-Tool.
+            Our free generator gives you a complete, SEO-optimized draft at the click of a button —
+            which you can then fine-tune with your product knowledge. For keyword research we recommend{" "}
+            <a href="https://erank.com/?ref=listingwriter" target="_blank" rel="noopener noreferrer" className="affiliate-link">eRank</a> as
+            the leading Etsy SEO tool.
           </p>
         </div>
 
         {/* FAQ */}
         <div style={{ marginTop: 48 }}>
           <h2 className="playfair" style={{ fontSize: 22, color: "#2c1810", marginBottom: 20 }}>
-            Häufige Fragen zum Etsy Listing Generator
+            Frequently asked questions about the Etsy Listing Generator
           </h2>
           <div>
             {FAQ.map((item, i) => (
@@ -430,9 +402,9 @@ export default function EtsyListingGenerator() {
 
       <footer style={{ borderTop: "1px solid #e4dfd7", padding: "20px 24px", textAlign: "center", marginTop: 40 }}>
         <p className="mono" style={{ fontSize: 11, color: "#b0a898", letterSpacing: "0.1em" }}>
-          LISTINGWRITER · ETSY LISTING GENERATOR · <a href="/" style={{ color: "#8b7355" }}>HAUPTSEITE</a> ·{" "}
-          <a href="/datenschutz" style={{ color: "#8b7355" }}>DATENSCHUTZ</a> ·{" "}
-          <a href="/impressum" style={{ color: "#8b7355" }}>IMPRESSUM</a>
+          LISTINGWRITER · ETSY LISTING GENERATOR · <a href="/" style={{ color: "#8b7355" }}>HOME</a> ·{" "}
+          <a href="/datenschutz" style={{ color: "#8b7355" }}>PRIVACY</a> ·{" "}
+          <a href="/impressum" style={{ color: "#8b7355" }}>IMPRINT</a>
         </p>
       </footer>
     </div>
