@@ -350,7 +350,7 @@ export default function ListingWriter() {
       <header style={{ borderBottom:"1px solid #e4dfd7", padding:"18px 24px", display:"flex", alignItems:"center", justifyContent:"space-between", background:"white" }}>
         <div>
           <h1 className="playfair" style={{ fontSize:26, fontWeight:700, letterSpacing:"-0.01em", color:"#2c1810" }}>
-            Word<em>Weaver</em>
+            Listing<em>Writer</em>
           </h1>
           <p className="mono" style={{ fontSize:11, color:"#a09080", letterSpacing:"0.12em", marginTop:2 }}>
             {t.subtitle}

@@ -164,7 +164,7 @@ export default function EtsyListingGenerator() {
           <div>
             <a href="/" style={{ textDecoration: "none" }}>
               <h1 className="playfair" style={{ fontSize: 22, fontWeight: 700, color: "#2c1810" }}>
-                Word<em>Weaver</em>
+                Listing<em>Writer</em>
               </h1>
             </a>
             <p className="mono" style={{ fontSize: 10, color: "#a09080", letterSpacing: "0.12em", marginTop: 2 }}>
