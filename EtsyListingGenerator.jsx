@@ -257,10 +257,10 @@ export default function EtsyListingGenerator() {
                 For deeper keyword research we recommend:
               </p>
               <a href="https://erank.com?fpr=marco47" target="_blank" rel="noopener noreferrer" className="affiliate-link" style={{ display: "block", marginBottom: 8, fontSize: 13 }}>
-                📊 eRank – Etsy Keyword Tool
+                📊 eRank – Etsy Keyword Research
               </a>
               <a href="https://erank.com?fpr=marco47" target="_blank" rel="noopener noreferrer" className="affiliate-link" style={{ display: "block", fontSize: 13 }}>
-                📊 eRank – Etsy Keyword Research
+                🚀 eRank – Boost Your Etsy Sales
               </a>
               <p style={{ fontSize: 11, color: "#b0a898", marginTop: 10 }}>
                 * Affiliate links · Free for you
