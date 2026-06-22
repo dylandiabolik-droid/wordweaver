@@ -256,11 +256,11 @@ export default function EtsyListingGenerator() {
               <p style={{ fontSize: 12, color: "#5c4a38", lineHeight: 1.7, marginBottom: 10 }}>
                 For deeper keyword research we recommend:
               </p>
-              <a href="https://erank.com/?ref=listingwriter" target="_blank" rel="noopener noreferrer" className="affiliate-link" style={{ display: "block", marginBottom: 8, fontSize: 13 }}>
+              <a href="https://erank.com?fpr=marco47" target="_blank" rel="noopener noreferrer" className="affiliate-link" style={{ display: "block", marginBottom: 8, fontSize: 13 }}>
                 📊 eRank – Etsy Keyword Tool
               </a>
-              <a href="https://www.marmalead.com/?ref=listingwriter" target="_blank" rel="noopener noreferrer" className="affiliate-link" style={{ display: "block", fontSize: 13 }}>
-                🍊 Marmalead – Etsy SEO
+              <a href="https://erank.com?fpr=marco47" target="_blank" rel="noopener noreferrer" className="affiliate-link" style={{ display: "block", fontSize: 13 }}>
+                📊 eRank – Etsy Keyword Research
               </a>
               <p style={{ fontSize: 11, color: "#b0a898", marginTop: 10 }}>
                 * Affiliate links · Free for you
@@ -341,8 +341,8 @@ export default function EtsyListingGenerator() {
                     🚀 Next step: validate your keywords
                   </p>
                   <p style={{ fontSize: 13, color: "#2c5a3a", lineHeight: 1.7 }}>
-                    Check with <a href="https://erank.com/?ref=listingwriter" target="_blank" rel="noopener noreferrer" className="affiliate-link">eRank</a> or{" "}
-                    <a href="https://www.marmalead.com/?ref=listingwriter" target="_blank" rel="noopener noreferrer" className="affiliate-link">Marmalead</a>{" "}
+                    Check with <a href="https://erank.com?fpr=marco47" target="_blank" rel="noopener noreferrer" className="affiliate-link">eRank</a> or{" "}
+                    <a href="https://erank.com?fpr=marco47" target="_blank" rel="noopener noreferrer" className="affiliate-link">eRank</a>{" "}
                     how often your tags are searched and how competitive they are.
                   </p>
                 </div>
@@ -370,7 +370,7 @@ export default function EtsyListingGenerator() {
           <p style={{ fontSize: 14, color: "#5c4a38", lineHeight: 1.85 }}>
             Our free generator gives you a complete, SEO-optimized draft at the click of a button —
             which you can then fine-tune with your product knowledge. For keyword research we recommend{" "}
-            <a href="https://erank.com/?ref=listingwriter" target="_blank" rel="noopener noreferrer" className="affiliate-link">eRank</a> as
+            <a href="https://erank.com?fpr=marco47" target="_blank" rel="noopener noreferrer" className="affiliate-link">eRank</a> as
             the leading Etsy SEO tool.
           </p>
         </div>
