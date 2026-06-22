@@ -133,7 +133,7 @@ export default function EtsyListingGenerator() {
         body: JSON.stringify({ prompt }),
       });
       const data = await response.json();
-      const raw = data.content?.map((c) => c.text || "").join("").trim();
+      const raw = data.content?.map((c) => c.text || "").join("").trim().replace(/```json\n?|```\n?/g, "").trim();
       const parsed = JSON.parse(raw);
       setResult(parsed);
       setTimeout(() => resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
