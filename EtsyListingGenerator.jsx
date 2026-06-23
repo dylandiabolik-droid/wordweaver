@@ -166,7 +166,14 @@ export default function EtsyListingGenerator() {
             </p>
           </div>
         </div>
-      </header>
+      </header>{/* Blog Nav */}
+<nav style={{ borderBottom: "1px solid #e4dfd7", background: "white", padding: "8px 0" }}>
+  <div style={{ maxWidth: 860, margin: "0 auto", padding: "0 20px" }}>
+    <a href="/blog" style={{ fontSize: 12, color: "#5c4a38", textDecoration: "none", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "'Inconsolata', monospace" }}>
+      ✦ Etsy Seller Blog
+    </a>
+  </div>
+</nav>
 
       <main style={{ maxWidth: 860, margin: "0 auto", padding: "32px 20px" }}>
 
