@@ -270,9 +270,9 @@ export default function EtsyListingGenerator() {
 
             {/* Keyword tools */}
             <div className="sidebar-box">
-              <span className="sidebar-label">Keyword Research Tools</span>
+              <span className="sidebar-label">Etsy Growth Tools</span>
               <p style={{ fontSize: 12, color: "#5c4a38", lineHeight: 1.7, marginBottom: 14 }}>
-                Validate your tags with real search volume data:
+                Take your shop to the next level:
               </p>
               <a href="https://erank.com?fpr=marco47" target="_blank" rel="noopener noreferrer"
                 style={{ display: "flex", alignItems: "center", gap: 8, padding: "10px 12px", background: "#f0faf5", border: "1px solid #b5dcc7", borderRadius: 6, textDecoration: "none", marginBottom: 8 }}>
@@ -282,8 +282,16 @@ export default function EtsyListingGenerator() {
                   <p style={{ fontSize: 11, color: "#5c7a5c" }}>Etsy keyword research</p>
                 </div>
               </a>
+              <a href="https://www.alura.io?via=marco" target="_blank" rel="noopener noreferrer"
+                style={{ display: "flex", alignItems: "center", gap: 8, padding: "10px 12px", background: "#f0f4ff", border: "1px solid #b5c7dd", borderRadius: 6, textDecoration: "none", marginBottom: 8 }}>
+                <span style={{ fontSize: 16 }}>🚀</span>
+                <div>
+                  <p style={{ fontSize: 13, fontWeight: 600, color: "#1a2a4a" }}>Alura</p>
+                  <p style={{ fontSize: 11, color: "#4a5c7a" }}>All-in-one Etsy platform</p>
+                </div>
+              </a>
               <p className="mono" style={{ fontSize: 10, color: "#b0a898", marginTop: 6, letterSpacing: "0.06em" }}>
-                * Affiliate link — free for you
+                * Affiliate links — free for you
               </p>
             </div>
 
@@ -367,10 +375,10 @@ export default function EtsyListingGenerator() {
                 {/* Affiliate CTA after result */}
                 <div style={{ background: "#f0faf5", border: "1px solid #b5dcc7", borderLeft: "3px solid #2c7a4b", borderRadius: 6, padding: "16px 20px" }}>
                   <p style={{ fontSize: 14, color: "#1a4a2e", fontWeight: 600, marginBottom: 6 }}>
-                    Next step: validate your keywords
+                    Next step: grow your Etsy shop
                   </p>
                   <p style={{ fontSize: 13, color: "#2c5a3a", lineHeight: 1.7 }}>
-                    Check with <a href="https://erank.com?fpr=marco47" target="_blank" rel="noopener noreferrer" className="affiliate-link">eRank</a> how often your tags are searched and how competitive they are.
+                    Validate your keywords with <a href="https://erank.com?fpr=marco47" target="_blank" rel="noopener noreferrer" className="affiliate-link">eRank</a>, or use <a href="https://www.alura.io?via=marco" target="_blank" rel="noopener noreferrer" className="affiliate-link">Alura</a> for full shop analytics, product research, and sales tracking — all in one platform.
                   </p>
                 </div>
               </>
