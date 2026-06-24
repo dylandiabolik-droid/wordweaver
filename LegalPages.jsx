@@ -31,7 +31,7 @@ const LegalShell = ({ title, children }) => {
               Listing<em>Writer</em>
             </h1>
           </a>
-          <a href="/" className="icon-btn">← Back to home</a>
+         <a href="/" style={{ fontSize: 12, color: "#8a7868", textDecoration: "none", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "'Inconsolata', monospace" }}>← Back to home</a>
         </div>
       </header>
 
